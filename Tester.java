@@ -8,8 +8,6 @@ package WebServerLogs;
  * @version (23.5.2016)
  */
 
-import java.util.*;
-
 public class Tester
 {
     public static void main(String[] args) {
@@ -19,8 +17,15 @@ public class Tester
     private static void testUniqueIPAnalyzer() {
         LogAnalyzer test = new LogAnalyzer();
         test.readFile("./Data/short-test_log");
-        test.printAll();
-        System.out.print(test.countUniqueIPs());
         
+        //test.printAll();
+        //System.out.print("Unique adress: " + test.countUniqueIPs());
+        //test.printAllHigherThanNum(200);
+        
+       // for(String n :test.uniqueIPVisitsOnDay("Sep 30")){
+       // 	System.out.println(n);
+       // }
+        
+        System.out.print(test.countUniqueIPsInRange(300,399));
     }
 }

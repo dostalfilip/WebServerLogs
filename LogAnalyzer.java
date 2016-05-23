@@ -50,6 +50,58 @@ public class LogAnalyzer
     	 
     	 return ipAdress.size();
      }
+     /**
+      * This method should examine all the web log entries in records
+	  *	and print those LogEntrys that have a status code greater than num .
+      * 
+      * @param num
+      */
+     public void printAllHigherThanNum(int num){
+    	 for(LogEntry n : records){
+    		 if(n.getStatusCode() > num){
+    			 System.out.println(n);
+    		 }
+    	 }
+     }
+     
+     /**
+      * 
+      * @param someday in the format “MMM DD” where MMM is the first three
+	  *			characters of the month name with the first letter capitalized and the others in lowercase,
+	  *			and DD is the day in two digits (examples are “Dec 05” and “Apr 22”)
+      * @return an ArrayList of Strings of unique IP addresses that had access on the given day.		
+      */
+     public ArrayList<String> uniqueIPVisitsOnDay(String someday){
+    	 ArrayList<String> output = new ArrayList<String>();
+    	 for(LogEntry n : records){
+    		 String temp = n.getAccessTime().toString().substring(4, 10);
+    		 if(someday.equals(temp) && !output.contains(n.getIpAddress())){
+    			 output.add(n.getIpAddress());
+    		 }
+    	 }
+    	 
+    	 return output;
+     }
+     
+     /**
+      * 
+      * @param low
+      * @param high
+      * @return This method returns the number of unique IP
+	  *			addresses in records that have a status code in the range from low to high , inclusive.
+      */
+     public int countUniqueIPsInRange(int low, int high){
+    	 ArrayList<String> uniqueIP = new ArrayList<String>();
+    	 for(LogEntry n : records){
+    		 
+    		 if(!uniqueIP.contains(n.getIpAddress()) &&
+    				 n.getStatusCode() >= low && n.getStatusCode() <= high ){
+    			 uniqueIP.add(n.getIpAddress());
+    		 }
+    	 }
+    	 
+    	 return uniqueIP.size();
+     }
      
      
 }
