@@ -32,5 +32,24 @@ public class LogAnalyzer
          }
      }
      
+     /**
+      * 
+	  *	should also assume that the instance variable records already has its ArrayList of
+	  *	Strings read in from a file, and should access records in computing this value. For help,
+	  *	refer to the lectures in this lesson on the unique IP algorithm and code.
+      * 
+      * @return an integer representing the number of unique IP addresses
+      */
+     public int countUniqueIPs(){
+    	 ArrayList<String> ipAdress = new ArrayList<String>();
+    	 for(LogEntry n : records){
+    		 if(!ipAdress.contains(n.getIpAddress())){
+    			 ipAdress.add(n.getIpAddress());
+    		 }
+    	 }
+    	 
+    	 return ipAdress.size();
+     }
+     
      
 }
