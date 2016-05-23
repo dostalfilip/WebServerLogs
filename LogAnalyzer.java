@@ -103,5 +103,26 @@ public class LogAnalyzer
     	 return uniqueIP.size();
      }
      
+     /**
+      * 
+      * @return HashMap<String, Integer> that maps an IP address
+		to the number of times that IP address appears in records , meaning the number of
+		times this IP address visited the website
+      */
+     public HashMap<String,Integer> countVisitsPerIP(){
+    	 HashMap<String,Integer> myMap = new HashMap<String,Integer>();
+    	 for(LogEntry n : records){
+    		 if(myMap.containsKey(n.getIpAddress())){
+    			 myMap.put(n.getIpAddress(), myMap.get(n.getIpAddress())+1);
+    		 }
+    		 else{
+    			 myMap.put(n.getIpAddress(),1);
+    		 }
+    	 }
+    	 
+    	 return myMap;
+     }
+     
+     
      
 }

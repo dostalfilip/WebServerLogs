@@ -1,5 +1,6 @@
 package WebServerLogs;
 
+import java.util.HashMap;
 
 /**
  * Write a description of class Tester here.
@@ -17,15 +18,16 @@ public class Tester
     private static void testUniqueIPAnalyzer() {
         LogAnalyzer test = new LogAnalyzer();
         test.readFile("./Data/short-test_log");
+
+    
+      //  HashMap<String,Integer> myMap = test.countVisitsPerIP();
+      //  for(String n : myMap.keySet()){
+      //  	System.out.println(n+" Zobrazeno: "+myMap.get(n));
+      //  }
+    
         
-        //test.printAll();
-        //System.out.print("Unique adress: " + test.countUniqueIPs());
-        //test.printAllHigherThanNum(200);
         
-       // for(String n :test.uniqueIPVisitsOnDay("Sep 30")){
-       // 	System.out.println(n);
-       // }
         
-        System.out.print(test.countUniqueIPsInRange(300,399));
-    }
+    
+    }  
 }
