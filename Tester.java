@@ -1,5 +1,6 @@
 package WebServerLogs;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -29,9 +30,38 @@ public class Tester
       //  System.out.println(test.mostNumberVisitsByIP(test.countVisitsPerIP()));
         
         
-        for(String n : test.iPsMostVisits(test.countVisitsPerIP())){
+       // for(String n : test.iPsMostVisits(test.countVisitsPerIP())){
+       // 	System.out.println(n);
+       // }
+        
+        
+        /*HashMap<String,ArrayList<String>> myMap = test.iPsForDays();
+        for(String n : myMap.keySet()){
+        	System.out.println("***"+n+"***");
+        	for(String i : myMap.get(n)){
+        		System.out.println(i);
+        	}
+        }
+        */
+        
+        //System.out.print(test.dayWithMostIPVisits(test.iPsForDays()));
+        
+        
+        /*
+         * Test last method iPsWithMostVisitsOnDay
+         */
+        
+        for (String n : test.iPsWithMostVisitsOnDay(test.iPsForDays(), "Sep 30")){
         	System.out.println(n);
         }
+        
+        
+        
+        
+        
+        
+        
+        
         
     
     }  

@@ -163,6 +163,101 @@ public class LogAnalyzer
     	 return output;
      }
      
+     /**
+      * 
+      * @return	HashMap<String, ArrayList<String>> that uses records and maps
+				days from web logs to an ArrayList of IP addresses that occurred on that day.
+      */
+     public HashMap<String, ArrayList<String>> iPsForDays(){
+    	 HashMap<String,ArrayList<String>> output = new HashMap<String,ArrayList<String>>();
+    	 ArrayList<String> days = new ArrayList<String>();
+    	 for(LogEntry n : records){
+    		 String temp = n.getAccessTime().toString().substring(4, 10);
+    		 days.add(temp);
+    	 }
+    	 for(String n : days){
+    		 ArrayList<String> list = new ArrayList<String>();
+    		 
+    		 /*
+    		  *adding IP by IP 
+    		  *it is not unique addres
+    		  */
+    		 
+    		for(LogEntry i : records){
+        		 String temp = i.getAccessTime().toString().substring(4, 10);
+        		 if(temp.equals(n)){
+        			 list.add(i.getIpAddress());
+        		 }
+    		} 
+    		output.put(n, list);
+    	 }
+    	 return output;
+     }
+     
+     /**
+      * 
+      * @param input
+      * @return days from web logs to an ArrayList of IP addresses that occurred on that day. This
+      			method returns the day that has the most IP address visits. If there is a tie, then return
+      */
+     public String dayWithMostIPVisits(HashMap <String,ArrayList<String>> input){
+    	 int size = 0;
+    	 String name = "";
+    	 for(String n : input.keySet()){
+    		 ArrayList<String> temp = input.get(n);
+    		 if(temp.size() > size){
+    			 size = temp.size();
+    			 name = n;
+    		 } 
+    	 }
+    	 return name;
+     }
+     
+     
+     /**
+      * 
+      * @param 	inputMap
+      * 		HashMap<String, ArrayList<String>> that uses records
+				and maps days from web logs to an ArrayList of IP addresses that occurred on that day
+      * @param 	day
+      * 		String representing a day in the format “MMM DD”
+      * @return	ArrayList<String> of IP addresses that had the
+				most accesses on the given day
+      */
+     public ArrayList<String> iPsWithMostVisitsOnDay(HashMap<String, ArrayList<String>> inputMap,String day){
+    	 int top = 0;
+    	 ArrayList<String> output = new ArrayList<String>();    	 
+    	 HashMap<String,Integer> rating = new HashMap<String,Integer>();
+    	 
+    	 for(String n : inputMap.get(day)){
+    		 if(rating.containsKey(n)){
+    			rating.put(n, rating.get(n)+1); 
+    		 }
+    		 else{
+    			rating.put(n, 1); 
+    		 }
+    	 }    	 
+    	 for(String n : rating.keySet()){
+    		 int temp = rating.get(n);
+    		 if(top< temp){
+    			 top = temp;
+    		 } 
+    	 }
+    	 
+    	 for(String n : rating.keySet()){
+    		 if(rating.get(n) == top){
+    			 output.add(n);
+    		 }
+    	 }
+    	 
+    	 
+    	 return output;
+     }
+     
+     
+     
+     
+     
      
      
      
