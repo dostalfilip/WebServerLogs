@@ -106,8 +106,8 @@ public class LogAnalyzer
      /**
       * 
       * @return HashMap<String, Integer> that maps an IP address
-		to the number of times that IP address appears in records , meaning the number of
-		times this IP address visited the website
+				to the number of times that IP address appears in records , meaning the number of
+				times this IP address visited the website
       */
      public HashMap<String,Integer> countVisitsPerIP(){
     	 HashMap<String,Integer> myMap = new HashMap<String,Integer>();
@@ -122,6 +122,77 @@ public class LogAnalyzer
     	 
     	 return myMap;
      }
+     
+     /**
+      * 
+      * @param 	inputMap that maps an IP address to the number of times
+				that IP address appears in the web log file
+      * @return the maximum number of
+				visits to this website by a single IP address.
+      */
+     public int mostNumberVisitsByIP(HashMap<String, Integer> inputMap){
+    	 int top = 0;
+    	 for(String n : inputMap.keySet()){
+    		 if(top < inputMap.get(n)){
+    			 top = inputMap.get(n);
+    		 }
+    	 }
+    	 
+    	 
+    	 return top;
+     }
+     
+     /**
+      * 
+      * @param 	inputMap that maps an IP address to the number of times that IP
+				address appears in the web log file.
+      * @return an ArrayList of Strings of IP
+	  *			addresses that all have the maximum number of visits to this website
+      */
+     public ArrayList<String> iPsMostVisits(HashMap<String, Integer> inputMap){
+    	 ArrayList<String> output = new ArrayList<String>();
+    	 int top = mostNumberVisitsByIP(inputMap);
+    	 for(String n : inputMap.keySet()){
+    		 if(top == inputMap.get(n)){
+    			 output.add(n);
+    		 }
+    		 
+    	 }
+    	 System.out.println("The biggist occurance of IP is " + top +" times.");
+    	 
+    	 return output;
+     }
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      
      
      

@@ -9,6 +9,7 @@ import java.util.HashMap;
  * @version (23.5.2016)
  */
 
+
 public class Tester
 {
     public static void main(String[] args) {
@@ -17,16 +18,20 @@ public class Tester
     
     private static void testUniqueIPAnalyzer() {
         LogAnalyzer test = new LogAnalyzer();
-        test.readFile("./Data/short-test_log");
-
+        //test.readFile("./Data/short-test_log");
+        test.readFile("./Data/weblog3-short_log");
     
       //  HashMap<String,Integer> myMap = test.countVisitsPerIP();
       //  for(String n : myMap.keySet()){
       //  	System.out.println(n+" Zobrazeno: "+myMap.get(n));
       //  }
     
+      //  System.out.println(test.mostNumberVisitsByIP(test.countVisitsPerIP()));
         
         
+        for(String n : test.iPsMostVisits(test.countVisitsPerIP())){
+        	System.out.println(n);
+        }
         
     
     }  

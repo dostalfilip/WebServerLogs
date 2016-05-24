@@ -1,5 +1,7 @@
 Duke University project week 3 
 
+Assignment: Website Visits
+
 Java Programming: Arrays, Lists, and Structured Data
 Programming Exercise: Counting Website Visits
 Assignment: Website Visits
@@ -62,4 +64,4 @@ most accesses on the given day. For example, if you use the file weblog3short_
 log ,
 and the parameter for the day is “Sep 30”, then there are two IP addresses in the
 ArrayList returned: 61.15.121.171 and 177.4.40.87. Hint: This method should call
-another method you have written.
+another method you have written.ss, write the method iPsWithMostVisitsOnDay, which has two parameters—the first one is a HashMap<String, ArrayList<String>> that uses records and maps days from web logs to an ArrayList of IP addresses that occurred on that day, and the second parameter is a String representing a day in the format “MMM DD” described above. This method returns an ArrayList<String> of IP addresses that had the most accesses on the given day. For example, if you use the file weblog3-short_log, and the parameter for the day is “Sep 30”, then there are two IP addresses in the ArrayList returned: 61.15.121.171 and 177.4.40.87. Hint: This method should call another method you have written.
