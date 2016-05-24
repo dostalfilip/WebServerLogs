@@ -1,5 +1,7 @@
 package WebServerLogs;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Write a description of class Tester here.
@@ -8,23 +10,59 @@ package WebServerLogs;
  * @version (23.5.2016)
  */
 
-import java.util.*;
 
 public class Tester
 {
     public static void main(String[] args) {
-       /* LogEntry le = new LogEntry("1.2.3.4", new Date(), "example request", 200, 500);
-        System.out.println(le);
-        LogEntry le2 = new LogEntry("1.2.100.4", new Date(), "example request 2", 300, 400);
-        System.out.println(le2);
-        */ 
-        testLogAnalyzer();
+    	testUniqueIPAnalyzer();
     }
     
-    private static void testLogAnalyzer() {
+    private static void testUniqueIPAnalyzer() {
         LogAnalyzer test = new LogAnalyzer();
-        test.readFile("./Data/short-test_log");
-        test.printAll();
+        //test.readFile("./Data/short-test_log");
+        test.readFile("./Data/weblog3-short_log");
+    
+      //  HashMap<String,Integer> myMap = test.countVisitsPerIP();
+      //  for(String n : myMap.keySet()){
+      //  	System.out.println(n+" Zobrazeno: "+myMap.get(n));
+      //  }
+    
+      //  System.out.println(test.mostNumberVisitsByIP(test.countVisitsPerIP()));
         
-    }
+        
+       // for(String n : test.iPsMostVisits(test.countVisitsPerIP())){
+       // 	System.out.println(n);
+       // }
+        
+        
+        /*HashMap<String,ArrayList<String>> myMap = test.iPsForDays();
+        for(String n : myMap.keySet()){
+        	System.out.println("***"+n+"***");
+        	for(String i : myMap.get(n)){
+        		System.out.println(i);
+        	}
+        }
+        */
+        
+        //System.out.print(test.dayWithMostIPVisits(test.iPsForDays()));
+        
+        
+        /*
+         * Test last method iPsWithMostVisitsOnDay
+         */
+        
+        for (String n : test.iPsWithMostVisitsOnDay(test.iPsForDays(), "Sep 30")){
+        	System.out.println(n);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    }  
 }
